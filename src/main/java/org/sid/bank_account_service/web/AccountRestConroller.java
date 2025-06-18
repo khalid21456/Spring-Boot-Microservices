@@ -1,8 +1,13 @@
 package org.sid.bank_account_service.web;
 
 
+import org.sid.bank_account_service.dto.BankAccountRequestDTO;
+import org.sid.bank_account_service.dto.BankAccountResponseDTO;
 import org.sid.bank_account_service.entities.BankAccount;
+import org.sid.bank_account_service.mappers.AccountMapper;
 import org.sid.bank_account_service.repositories.BankAccountRepository;
+import org.sid.bank_account_service.services.AccountServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -14,9 +19,14 @@ import java.util.List;
 public class AccountRestConroller {
 
     private BankAccountRepository bankAccountRepository;
+    private AccountServiceImpl accountService;
 
-    public AccountRestConroller(BankAccountRepository bankAccountRepository) {
+    @Autowired
+    private AccountMapper accountMapper;
+
+    public AccountRestConroller(AccountServiceImpl accountService,BankAccountRepository bankAccountRepository) {
         this.bankAccountRepository = bankAccountRepository;
+        this.accountService = accountService;
     }
 
     @GetMapping("/bankAccounts")
@@ -30,8 +40,8 @@ public class AccountRestConroller {
     }
 
     @PostMapping("/bankAccount")
-    public BankAccount save(@RequestBody BankAccount bankAccount) {
-        return bankAccountRepository.save(bankAccount);
+    public BankAccountResponseDTO save(@RequestBody BankAccountRequestDTO requestDTO) {
+        return accountService.addAccount(requestDTO);
     }
 
     @PutMapping("/bankAccounts/{id}")
