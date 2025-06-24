@@ -11,5 +11,6 @@ import org.springframework.stereotype.Service;
 public interface AccountService {
 
     public BankAccountResponseDTO addAccount(BankAccountRequestDTO bankAccountDTO);
+    public BankAccountResponseDTO updateAccount(String id,BankAccountRequestDTO bankAccount);
 
 }
