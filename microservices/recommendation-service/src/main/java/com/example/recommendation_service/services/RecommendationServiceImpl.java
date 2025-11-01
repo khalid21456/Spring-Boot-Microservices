@@ -10,6 +10,7 @@ import se.magnus.api.core.recommendation.RecommendationService;
 import se.magnus.api.exceptions.InvalidInputException;
 import se.magnus.util.http.ServiceUtil;
 
+
 @RestController
 public class RecommendationServiceImpl implements RecommendationService {
 
