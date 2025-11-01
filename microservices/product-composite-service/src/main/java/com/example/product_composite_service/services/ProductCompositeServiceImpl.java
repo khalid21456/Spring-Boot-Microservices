@@ -2,6 +2,10 @@ package com.example.product_composite_service.services;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.RestController;
 import se.magnus.api.composite.product.*;
 import se.magnus.api.core.product.Product;
@@ -22,6 +26,16 @@ public class ProductCompositeServiceImpl implements ProductCompositeService {
     this.serviceUtil = serviceUtil;
     this.integration = integration;
   }
+
+//  @Operation(
+//          summary = "${api.product-composite.get-composite-product.description}",
+//          description = "${api.product-composite.get-composite-product.notes}")
+//  @ApiResponses(value = {
+//          @ApiResponse(responseCode = "200", description = "${api.responseCodes.ok.description}"),
+//          @ApiResponse(responseCode = "400", description = "${api.responseCodes.badRequest.description}"),
+//          @ApiResponse(responseCode = "404", description = "${api.responseCodes.notFound.description}"),
+//          @ApiResponse(responseCode = "422", description = "${api.responseCodes.unprocessableEntity.description}")
+//  })
 
   @Override
   public ProductAggregate getProduct(int productId) {
