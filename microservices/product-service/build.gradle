@@ -18,12 +18,8 @@ repositories {
 	mavenCentral()
 }
 
-ext {
-	mapstructVersion = "1.6.3.Final"
-}
 
 dependencies {
-	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
 	implementation project(':api')
 	implementation project(':util')
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -31,9 +27,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	annotationProcessor "org.mapstruct:mapstructprocessor:${mapstructVersion}"
-	testAnnotationProcessor "org.mapstruct:mapstructprocessor:${mapstructVersion}"
-	compileOnly "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
 	testImplementation 'org.testcontainers:junit-jupiter'
